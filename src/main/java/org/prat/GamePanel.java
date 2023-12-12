@@ -57,8 +57,6 @@ public class GamePanel extends JPanel {
             System.out.println("FPS: " + frames);
             frames = 0;
         }
-        repaint();
-
     }
 
     private void updateRectangle() {
@@ -75,9 +73,9 @@ public class GamePanel extends JPanel {
     }
 
     private Color getRandomColor() {
-        int r = random.nextInt(255);
-        int g = random.nextInt(255);
-        int b = random.nextInt(255);
+        int r = random.nextInt(256);
+        int g = random.nextInt(256);
+        int b = random.nextInt(256);
 
         return new Color(r,g,b);
     }
