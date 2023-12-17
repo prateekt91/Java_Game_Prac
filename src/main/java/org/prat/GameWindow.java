@@ -1,6 +1,8 @@
 package org.prat;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GameWindow {
 
@@ -14,5 +16,17 @@ public class GameWindow {
         jFrame.setResizable(false);
         jFrame.pack();
         jFrame.setVisible(true);
+        jFrame.addWindowFocusListener(new WindowAdapter() {
+            @Override
+            public void windowGainedFocus(WindowEvent e) {
+                super.windowGainedFocus(e);
+            }
+
+            @Override
+            public void windowLostFocus(WindowEvent e) {
+                super.windowLostFocus(e);
+                gamePanel.getGame().windowFocusLost();
+            }
+        });
     }
 }
