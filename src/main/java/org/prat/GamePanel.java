@@ -17,15 +17,10 @@ public class GamePanel extends JPanel {
 
     private MouseInputs mouseInputs;
     private float xDelta = 100;
-    private float xDir = 1f;
     private float yDelta = 100;
-    private float yDir = 1f;
-    private int frames = 0;
-    private long lastCheck = 0;
-
     private BufferedImage img;
     private BufferedImage[][] animations;
-    private int aniTick, aniIndex, aniSpeed = 15;
+    private int aniTick, aniIndex, aniSpeed = 25;
     private int playerAction = IDLE;
     private int playerDir = -1;
     private boolean moving = false;
@@ -63,9 +58,9 @@ public class GamePanel extends JPanel {
 
     private void setPanelSize() {
         Dimension size = new Dimension(1280,800);
-        setMinimumSize(size);
+      //  setMinimumSize(size);
         setPreferredSize(size);
-        setMaximumSize(size);
+       // setMaximumSize(size);
     }
 
     public void setDirection(int direction) {
@@ -96,12 +91,15 @@ public class GamePanel extends JPanel {
         }
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void updateGame() {
         updateAnimationTick();
         setAnimation();
         updatePos();
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.drawImage(animations[playerAction][aniIndex], (int) xDelta, (int) yDelta,256,160, null);
     }
 
@@ -116,5 +114,4 @@ public class GamePanel extends JPanel {
                 aniIndex = 0;
         }
     }
-
 }
