@@ -1,6 +1,7 @@
 package org.prat.inputs;
 
 import org.prat.GamePanel;
+import org.prat.gamestates.GameState;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,9 +15,16 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
+        switch (GameState.state) {
+            case MENU -> gamePanel
+                    .getGame().getMenu()
+                    .mouseClicked(e);
+            case PLAYING -> gamePanel
+                    .getGame().getPlaying()
+                    .mouseClicked(e);
+            default -> {}
+        }
 
-        if (e.getButton() == MouseEvent.BUTTON1)
-            gamePanel.getGame().getPlayer().setAttacking(true);
     }
 
     @Override
