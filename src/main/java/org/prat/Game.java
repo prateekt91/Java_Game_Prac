@@ -51,7 +51,7 @@ public class Game implements Runnable{
 
             case MENU -> menu.update();
             case PLAYING -> playing.update();
-            default -> {}
+            case OPTIONS, QUIT-> System.exit(0);
         }
 
     }
